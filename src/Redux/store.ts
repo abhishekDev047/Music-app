@@ -1,8 +1,12 @@
 import { configureStore } from "@reduxjs/toolkit";
-import queryReducer from "./features/querySlice"; 
+import visualReducer from "./features/querySlice"; 
 
-export default configureStore({
+ export const store = configureStore({
     reducer:{
-        query: queryReducer
+        visual: visualReducer
     },
 });
+
+export type RootState = ReturnType<typeof store.getState>
+
+export type AppDispatch = typeof store.dispatch;

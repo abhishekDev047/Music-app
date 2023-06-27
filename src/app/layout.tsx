@@ -3,7 +3,7 @@ import Sidebar from './Components/Sidebar';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './globals.css';
 import { Provider } from 'react-redux';
-import store from '@/Redux/store';
+import {store} from '@/Redux/store';
 
 export const metadata = {
   title: 'Music App',
