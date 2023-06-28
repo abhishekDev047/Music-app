@@ -25,7 +25,7 @@ function HomePage() {
     
     //fetch api function for getting the data from the spotify server.
     const func = async () => {
-        const url: string = `https://api.spotify.com/v1/search?q=${query}&type=track&limit=20`
+        const url: string = `https://api.spotify.com/v1/search?q=${query}&type=track&limit=50`
         try {
             const response = await fetch(url, {
                 headers: {

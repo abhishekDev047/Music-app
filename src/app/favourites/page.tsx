@@ -84,14 +84,13 @@ function page() {
   return (
     <div className='flex-column'>
 
-      <div>
-        <button onClick={()=>{localStorage.clear()}}> clear </button>
-        <button onClick={()=>console.log(items)}>see me</button>
+      <div className='text-white fs-1'>
+        Sorry for inconvenience I am still working on favourites and playlist features but there is a search feature included in home page you can use the feature on home page for now but later i am gonna move this feature to a separate component 
       </div>
 <div className='container'>
       <div className='row row-cols-2 row-cols-lg-5 g-2 g-lg-3 p-3'>
       {/* {
-                            items.map(async(item:any, index:number)=>(
+                            items.map((item:any, index:number)=>(
                                 <Items key={index} name={item.artists[0].name} spotifyArtist={item.artists[0].external_urls.spotify} spotifyTrack={item.external_urls.spotify} poster={item.album.images[1].url} trackName={item.name} local={item.href} like={"Disabled"}/>
                             ))
                         } */}
