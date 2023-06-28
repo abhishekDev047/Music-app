@@ -20,7 +20,7 @@ function Items(props:any) {
   }
   return (
 <>
-<div className="col">
+<div className="">
 <div className="card text-white bg-success mb-3">
   <Link href={props.spotifyTrack} target='blank'>
   <Image src={props.poster} height={200} width={200} className="card-img-top" alt="Artist"/></Link>

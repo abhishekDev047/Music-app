@@ -18,13 +18,13 @@ export default function RootLayout({
   return (
     <Provider store={store}>
     <html lang="en">
-      <body className=' container-fluid text-center bg-dark fs-5'>
-        <section className='row'>
-          <div className='col-sm-2 text-light sidebar '>
+      <body className='text-center bg-dark fs-5'>
+        <section className='flex-col flex'>
+          <div className=' text-light sidebar'>
               <Sidebar/>
           </div>
        
-          <div className="col-sm-10 vh-100 p-2">
+          <div className="h-100 mt-20">
             {children}
             </div>
          </section>

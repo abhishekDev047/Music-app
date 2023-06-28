@@ -1,18 +1,16 @@
 "use client";
 import React, { useState,useEffect } from 'react';
 import Items from './Items';
-import { useAppSelector } from "../../Redux/hooks";
-import Spinner from 'react-bootstrap/Spinner';
 import FloatingLabel from 'react-bootstrap/FloatingLabel';
 import Form from 'react-bootstrap/Form';
 import {BsSearchHeartFill} from"react-icons/bs";
+import Image from 'next/legacy/image';
 
 function HomePage() {
-   const visual = useAppSelector((state) => state.visual.value);
+//    const visual = useAppSelector((state) => state.visual.value);
     const [query, setQuery] = useState("Taylor swift");
     const [result, setResult]:any = useState([]);
     const [token, setToken]:any = useState("");
-    const [isbuffer, setBuffer]:any = useState(true);
 
     useEffect(() => {
       const run = ()=>{
@@ -32,7 +30,6 @@ function HomePage() {
                     'Authorization': `Bearer ${token}`
                 }
             });
-            setBuffer(false)
             const results = await response.json();
             setResult(results.tracks.items);
             console.log(results.tracks.items);
@@ -52,32 +49,22 @@ let res = await response.json();
     };
 
     // the return statement for  render
-    if(isbuffer){
-        return(
-<div className='flex-column'>
-<section id='Quote-section'>
-                    <div className='h-25 w-100 bg-danger text-white  text-end p-3 fs-1'> Music is Love </div>
-</section>
-<section className='buffer-zone'>
-<div className='d-flex align-items-center justify-content-center'>
-<Spinner animation="border" role="status">
-      <span className="visually-hidden">Loading...</span>
-    </Spinner>
-
-</div>
-</section>
-</div>
-        )
-    }
-    else {return (
+   return (
         <>
-            <div className='flex-column'>
-                <section id='Quote-section'>
-                    <div className='h-25 w-100 bg-danger text-white  text-end p-3 fs-1'> Music is Love </div>
+            <div className='flex-column overflow-hidden'>
+                <section id='Quote-section'> 
+                    <div className=' flex-col flex'>
+                        <Image
+                        layout='intrinsic'
+                        src={'/images/Taylormylove.jpg'}
+                        height={2400}
+                        width={3840}
+                        alt='Taylor Swift'
+                        />
+                    <div className=' text-white  p-3 text-6xl flex md:text-9xl relative bottom-40 md:bottom-80 font-mono italic right-0 self-end'> Music is Love </div></div>
 </section>
                 
                 <section id='tracks-section'>
-                    <div className={visual}>
                         <div className='row my-3'>
 
                     <FloatingLabel
@@ -94,9 +81,8 @@ let res = await response.json();
       </p>
     
       </div>
-      </div>
  
-                <div className="container">
+                <div className="flex-col">
                     <div className="row row-cols-2 row-cols-lg-5 g-2 g-lg-3 p-3">
                     
                         {
@@ -113,6 +99,6 @@ let res = await response.json();
 
         </>
     )}
-}
+
 
 export default HomePage;
