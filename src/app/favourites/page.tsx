@@ -1,99 +1,50 @@
 "use client";
 import React, { useEffect, useState } from 'react';
+import Items2 from './Components/Items2';
 
 
 function page() {
   const [items, setItems]:any = useState([]);
-  // const [items1, setItems1]:any = useState([]);
-  // var listArr:string[] = [];
-  // var add = listArr.toString();
-//   const myFunc = async ()=>{
+  // const [token, setToken]:any = useState();
+  const getToken = async ()=>{
   
-//       let data:any = localStorage.getItem("favourites");
-// if(data){
-//   let res = await fetch('https://accounts.spotify.com/api/token', {
-//     method: 'POST',
-//     body: new URLSearchParams({
-//         'grant_type': 'client_credentials',
-//         'client_id': 'cfe908cfd25248a7b6267307777f70ac',
-//         'client_secret': '1757e91391b547659b8c76ae2f48dd42'
-//     })
-// });
-// let token0:any = res.json()
-// const token = token0.access_token;
-//   const list:string[] = data.split(',');
-//   list.map(async(item, index)=>{
-//     // let url= "https://api.spotify.com/v1/tracks/1BxfuPKGuaTgP7aM0Bbdwr"
-//     let res0 = await fetch(item, {
-//       headers: {
-//           'Authorization': `Bearer  ${token}`
-//       }
-//   });
-//       let res2:object = await res0.json();
-//       // console.log(res2);
-//       setItems([...items,res2])
-//   });
-//   console.log(items)
-// }
-// else{
-//   setItems([]);
-// }
-    
-//   };
+  let res:any = await fetch('https://accounts.spotify.com/api/token', {
+    method: 'POST',
+    body: new URLSearchParams({
+        'grant_type': 'client_credentials',
+        'client_id': 'cfe908cfd25248a7b6267307777f70ac',
+        'client_secret': '1757e91391b547659b8c76ae2f48dd42'
+    })
+});
+let resx = await res.json();
+// setToken(resx.access_token)
+  };
 
-  // useEffect(() => {
-  // myFunc();
-  // }, []);
-  
-  // const setLocal = ()=>{
-  //   let final:string[] = [];
-  //   let data:any= localStorage.getItem("favourites");
-  //   if(data){
-  //    final = data.split(',');
-  //   }
-  //   console.log(final);
-  //   let listArr:string[] = final;
-  //   listArr = [...listArr,"never"]
-  //   let add = listArr.toString();
-  //   localStorage.setItem("favourites",add);
-  // }
+  const myFunc = ()=>{
+    let final: string[] = [];
+    let data: any = localStorage.getItem("favourites");
+    if (data) {
+        final = data.split(',');
+      }
+      setItems(final);
+      console.log(final)
+};
 
-//   const run = async ()=>{
-//     let res = await fetch('https://accounts.spotify.com/api/token', {
-//       method: 'POST',
-//       body: new URLSearchParams({
-//           'grant_type': 'client_credentials',
-//           'client_id': 'cfe908cfd25248a7b6267307777f70ac',
-//           'client_secret': '1757e91391b547659b8c76ae2f48dd42'
-//       })
-//   });
-//   let token0:any = res.json()
-//   let token = token0.access_token;
-//   console.log(token)
-//   let url= "https://api.spotify.com/v1/tracks/1BxfuPKGuaTgP7aM0Bbdwr"
-//   let res0 = await fetch(url, {
-//     headers: {
-//         'Authorization': `Bearer  ${token}`
-//     }
-// });
-
-//     let res2 = await res0.json();
-//     console.log(res2);
-//   };
+  useEffect(() => {
+    const get = ()=>{
+      getToken();
+      myFunc();
+    };
+    get();
+  }, []);
   
   return (
-    <div className='flex-column'>
-
-      <div className='text-white fs-1'>
-        Sorry for inconvenience I am still working on favourites and playlist features but there is a search feature included in home page you can use the feature on home page for now but later i am gonna move this feature to a separate component 
-      </div>
-<div className='container'>
+    <div className='flex-column overflow-hidden'>
+<div className='flex-col'>
       <div className='row row-cols-2 row-cols-lg-5 g-2 g-lg-3 p-3'>
-      {/* {
-                            items.map((item:any, index:number)=>(
-                                <Items key={index} name={item.artists[0].name} spotifyArtist={item.artists[0].external_urls.spotify} spotifyTrack={item.external_urls.spotify} poster={item.album.images[1].url} trackName={item.name} local={item.href} like={"Disabled"}/>
-                            ))
-                        } */}
+          {items.map((item:any,index:number)=>(
+            <Items2 key={index} local={item} />
+          ))}
         </div></div>
     </div>
   )
