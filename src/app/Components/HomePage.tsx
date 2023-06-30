@@ -44,7 +44,7 @@ function HomePage() {
             func();
         };
         run();
-    },[]);
+    },[token]);
     // the return statement for  render
     return (
         <>
