@@ -5,10 +5,10 @@ import './globals.css';
 import { Provider } from 'react-redux';
 import { store } from '@/Redux/store';
 
-export const metadata = {
-  title: 'Music App',
-  description: 'A single page music web app',
-}
+// export const metadata = {
+//   title: 'Music App',
+//   description: 'A single page music web app',
+// }
 
 export default function RootLayout({
   children,
@@ -18,6 +18,9 @@ export default function RootLayout({
   return (
     <Provider store={store}>
       <html lang="en">
+        <head>
+          <title>Music App</title>
+        </head>
         <body className='text-center bg-dark fs-5'>
           <section className='flex-col flex'>
             <div className=' text-light sidebar'>

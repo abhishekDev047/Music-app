@@ -31,7 +31,7 @@ function HomePage() {
             });
             const results = await response.json();
             setResult(results.tracks.items);
-            console.log(results);
+            // console.log(results);
         } catch (error) {
             let response = await fetch('https://accounts.spotify.com/api/token', {
                 method: 'POST',
