@@ -25,13 +25,6 @@ function page() {
       console.log(final)
 };
 
-  useEffect(() => {
-    const get = ()=>{
-      myFunc();
-    };
-    get();
-  }, []);
-  
   const handleClear = (method:number)=>{
     if(method===0){
       setShows("hidden");
@@ -42,6 +35,13 @@ function page() {
       handleClose();
     }
   };
+
+  useEffect(() => {
+    const get = ()=>{
+      myFunc();
+    };
+    get();
+  }, []);
 
   return (
     <div className='flex-column overflow-hidden'>

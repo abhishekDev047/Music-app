@@ -37,8 +37,8 @@ const myFunc = async ()=>{
 };
 
 useEffect(() => {
-  myFunc();
-}, []);
+    myFunc();
+  }, []);
 
 if(!item){
     return(

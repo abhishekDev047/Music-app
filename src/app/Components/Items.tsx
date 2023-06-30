@@ -11,28 +11,6 @@ function Items(props: any) {
   const [like, setLike] = useState<boolean>();
   const [show, setshow] = useState<string>("visible");
 
-useEffect(() => {
- const run = ()=>{
-  let final: string[] = [];
-  let data: any = localStorage.getItem("favourites");
-  if (data) {
-    final = data.split(',');
-  }
-  if(final.includes(props.local)){
-    setLike(true);
-    setisLike("text-danger");
-  }
-  else{
-    setLike(false);
-    setisLike("text-white")
-  }
- }; 
- run();
-}, [])
-
-
-
-
   const setLocal = (method: string) => {
 
     let final: string[] = [];
@@ -76,6 +54,26 @@ useEffect(() => {
     setLocal("delete");
     setshow("hidden");
   };
+
+  useEffect(() => {
+    const run = ()=>{
+     let final: string[] = [];
+     let data: any = localStorage.getItem("favourites");
+     if (data) {
+       final = data.split(',');
+     }
+     if(final.includes(props.local)){
+       setLike(true);
+       setisLike("text-danger");
+     }
+     else{
+       setLike(false);
+       setisLike("text-white")
+     }
+    }; 
+    run();
+   }, []);
+   
   return (
     <>
       <div className={show}>
