@@ -19,8 +19,8 @@ function Sidebar() {
           <Navbar.Collapse id="basic-navbar-nav" className='text-white bg-black py-3 w-full'>
             <Nav className="me-auto">
               <div className="mx-4"> <Link href={'/favourites'} className=' hover:text-red-700 '>Favourites</Link></div>
-              <div className="mx-4"> <Link href={'/movies'} className=' hover:text-red-700 '>Movies
-              </Link></div>
+              {/* <div className="mx-4"> <Link href={'/movies'} className=' hover:text-red-700 '>Movies
+              </Link></div> */}
             </Nav>
           </Navbar.Collapse>
         </Container>
